@@ -3,15 +3,17 @@ require 'spec_helper'
 describe 'postgresql::server::pg_hba_rule', :type => :define do
   let :facts do
     {
-      :osfamily => 'Debian',
-      :operatingsystem => 'Debian',
-      :operatingsystemrelease => '6.0',
-      :kernel => 'Linux',
+      :osfamily               => 'RedHat',
+      :operatingsystem        => 'RedHat',
+      :operatingsystemrelease => '7.0',
+      :lsbdistid              => 'RedHatEnterpriseServer',
+      :lsbdistcodename        => 'Maipo',
       :concat_basedir => tmpfilename('pg_hba'),
       :id => 'root',
-      :path => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
+      :path => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
     }
   end
+
   let :title do
     'test'
   end
@@ -37,7 +39,7 @@ describe 'postgresql::server::pg_hba_rule', :type => :define do
       }
     end
     it do
-      is_expected.to contain_concat__fragment('pg_hba_rule_test').with({
+      is_expected.to contain_concat_fragment('postgresql_hba_conf+150_pg_hba_rule_test').with({
         :content => /host\s+all\s+all\s+1\.1\.1\.1\/24\s+md5/
       })
     end
@@ -60,7 +62,7 @@ describe 'postgresql::server::pg_hba_rule', :type => :define do
       }
     end
     it do
-      is_expected.to contain_concat__fragment('pg_hba_rule_test').with({
+      is_expected.to contain_concat_fragment('postgresql_hba_conf+150_pg_hba_rule_test').with({
         :content => /local\s+all\s+all\s+ident/
       })
     end
@@ -85,7 +87,7 @@ describe 'postgresql::server::pg_hba_rule', :type => :define do
       }
     end
     it do
-      is_expected.to contain_concat__fragment('pg_hba_rule_test').with({
+      is_expected.to contain_concat_fragment('postgresql_hba_conf+150_pg_hba_rule_test').with({
         :content => /host\s+all\s+all\s+0\.0\.0\.0\/0\s+ldap\s+foo=bar/
       })
     end
@@ -188,7 +190,7 @@ describe 'postgresql::server::pg_hba_rule', :type => :define do
       end
 
       it do
-        is_expected.to contain_concat__fragment('pg_hba_rule_test').with({
+        is_expected.to contain_concat_fragment('postgresql_hba_conf+150_pg_hba_rule_test').with({
           :content => /local\s+all\s+all\s+0\.0\.0\.0\/0\s+peer/
 	})
       end

@@ -390,7 +390,7 @@ the stage for the large scale refactoring work of 3.0.0.
 ####Features
 
 
-####Bugfixes 
+####Bugfixes
 - Use boolean for refreshonly.
 - Fix postgresql::plperl documentation.
 - Add two missing parameters to config::beforeservice

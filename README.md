@@ -1,6 +1,9 @@
 postgresql
 ==========
 
+NOTE: This version of Postgresql has been modified to work within the SIMP
+infrastructure!
+
 Table of Contents
 -----------------
 
@@ -8,7 +11,7 @@ Table of Contents
 2. [Module Description - What does the module do?](#module-description)
 3. [Setup - The basics of getting started with PostgreSQL module](#setup)
     * [PE 3.2 supported module](#pe-3.2-supported-module)
-    * [Configuring the server](#configuring-the-server) 
+    * [Configuring the server](#configuring-the-server)
 4. [Usage - How to use the module for various tasks](#usage)
 5. [Upgrading - Guide for upgrading from older revisions of this module](#upgrading)
 6. [Reference - The classes, defines,functions and facts available in this module](#reference)

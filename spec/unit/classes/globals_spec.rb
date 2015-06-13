@@ -3,11 +3,11 @@ require 'spec_helper'
 describe 'postgresql::globals', :type => :class do
   let :facts do
     {
-      :osfamily               => 'Debian',
-      :operatingsystem        => 'Debian',
-      :operatingsystemrelease => '6.0',
-      :lsbdistid              => 'Debian',
-      :lsbdistcodename        => 'squeeze',
+      :osfamily               => 'RedHat',
+      :operatingsystem        => 'RedHat',
+      :operatingsystemrelease => '7.0',
+      :lsbdistid              => 'RedHatEnterpriseServer',
+      :lsbdistcodename        => 'Maipo',
     }
   end
 

@@ -4,12 +4,18 @@ group :development, :test do
   gem 'rake',                    :require => false
   gem 'rspec-puppet',            :require => false
   gem 'puppetlabs_spec_helper',  :require => false
-  gem 'serverspec',              :require => false
   gem 'puppet-lint',             :require => false
   gem 'beaker',                  :require => false
-  gem 'beaker-rspec',            :require => false
   gem 'pry',                     :require => false
   gem 'simplecov',               :require => false
+  gem 'puppet_facts',            :require => false
+  gem 'json',                    :require => false
+  gem 'simp-rake-helpers',       :require => false
+end
+
+group :system_tests do
+  gem 'beaker-rspec',  :require => false
+  gem 'serverspec',    :require => false
 end
 
 if facterversion = ENV['FACTER_GEM_VERSION']

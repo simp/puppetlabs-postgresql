@@ -7,13 +7,14 @@ describe 'postgresql::server::postgis', :type => :class do
 
   let :facts do
     {
-      :osfamily => 'Debian',
-      :operatingsystem => 'Debian',
-      :operatingsystemrelease => '6.0',
-      :kernel => 'Linux',
+      :osfamily               => 'RedHat',
+      :operatingsystem        => 'RedHat',
+      :operatingsystemrelease => '7.0',
+      :lsbdistid              => 'RedHatEnterpriseServer',
+      :lsbdistcodename        => 'Maipo',
       :concat_basedir => tmpfilename('postgis'),
       :id => 'root',
-      :path => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
+      :path => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
     }
   end
 

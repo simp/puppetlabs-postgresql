@@ -43,10 +43,8 @@ define postgresql::server::pg_hba_rule(
 
     # Create a rule fragment
     $fragname = "pg_hba_rule_${name}"
-    concat::fragment { $fragname:
-      target  => $target,
+    concat_fragment { "postgresql_hba_conf+${order}_${fragname}":
       content => template('postgresql/pg_hba_rule.conf'),
-      order   => $order,
     }
   }
 }

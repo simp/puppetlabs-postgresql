@@ -3,13 +3,15 @@ require 'spec_helper'
 describe 'postgresql::server', :type => :class do
   let :facts do
     {
-      :osfamily => 'Debian',
-      :operatingsystem => 'Debian',
-      :operatingsystemrelease => '6.0',
-      :concat_basedir => tmpfilename('server'),
-      :kernel => 'Linux',
-      :id => 'root',
-      :path => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
+      :osfamily               => 'RedHat',
+      :operatingsystem        => 'RedHat',
+      :operatingsystemrelease => '7.0',
+      :lsbdistid              => 'RedHatEnterpriseServer',
+      :lsbdistcodename        => 'Maipo',
+      :concat_basedir         => tmpfilename('server'),
+      :kernel                 => 'Linux',
+      :id                     => 'root',
+      :path                   => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
     }
   end
 

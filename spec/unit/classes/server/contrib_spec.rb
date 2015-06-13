@@ -7,13 +7,14 @@ describe 'postgresql::server::contrib', :type => :class do
 
   let :facts do
     {
-      :osfamily => 'Debian',
-      :operatingsystem => 'Debian',
-      :operatingsystemrelease => '6.0',
-      :kernel => 'Linux',
-      :concat_basedir => tmpfilename('contrib'),
-      :id => 'root',
-      :path => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
+      :osfamily               => 'RedHat',
+      :operatingsystem        => 'RedHat',
+      :operatingsystemrelease => '7.0',
+      :lsbdistid              => 'RedHatEnterpriseServer',
+      :lsbdistcodename        => 'Maipo',
+      :concat_basedir         => tmpfilename('contrib'),
+      :id                     => 'root',
+      :path                   => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
     }
   end
 

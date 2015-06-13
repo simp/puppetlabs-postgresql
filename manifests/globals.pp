@@ -44,7 +44,8 @@ class postgresql::globals (
   $manage_pg_hba_conf   = undef,
   $manage_pg_ident_conf = undef,
 
-  $manage_package_repo  = undef
+  # Make no assumptions that we are connected to the Internet
+  $manage_package_repo  = false
 ) {
   # We are determining this here, because it is needed by the package repo
   # class.

@@ -19,12 +19,14 @@ class postgresql::server::config {
 
   if ($manage_pg_hba_conf == true) {
     # Prepare the main pg_hba file
-    concat { $pg_hba_conf_path:
-      owner  => $user,
-      group  => $group,
-      mode   => '0640',
-      warn   => true,
-      notify => Class['postgresql::server::reload'],
+    concat_build { 'postgresql_hba_conf': target => $pg_hba_conf_path }
+
+    file { $pg_hba_conf_path:
+      owner     => $user,
+      group     => $group,
+      mode      => '0640',
+      subscribe => Concat_build['postgresql_hba_conf'],
+      notify    => Class['postgresql::server::reload'],
     }
 
     if $pg_hba_conf_defaults {
@@ -127,13 +129,15 @@ class postgresql::server::config {
 
 
   if ($manage_pg_ident_conf == true) {
-    concat { $pg_ident_conf_path:
-      owner  => $user,
-      group  => $group,
-      force  => true, # do not crash if there is no pg_ident_rules
-      mode   => '0640',
-      warn   => true,
-      notify => Class['postgresql::server::reload'],
+    concat_build { 'postgresql_ident_conf': target => $pg_ident_conf_path }
+
+    file { $pg_ident_conf_path:
+      owner     => $user,
+      group     => $group,
+      force     => true, # do not crash if there is no pg_ident_rules
+      mode      => '0640',
+      subscribe => Concat_build['postgresql_ident_conf'],
+      notify    => Class['postgresql::server::reload'],
     }
   }
 

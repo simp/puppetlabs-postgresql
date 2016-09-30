@@ -3,17 +3,15 @@ require 'spec_helper'
 describe 'postgresql::server::pg_ident_rule', :type => :define do
   let :facts do
     {
-      :osfamily               => 'RedHat',
-      :operatingsystem        => 'RedHat',
-      :operatingsystemrelease => '7.0',
-      :lsbdistid              => 'RedHatEnterpriseServer',
-      :lsbdistcodename        => 'Maipo',
+      :osfamily => 'Debian',
+      :operatingsystem => 'Debian',
+      :operatingsystemrelease => '6.0',
+      :kernel => 'Linux',
       :concat_basedir => tmpfilename('pg_ident'),
       :id => 'root',
       :path => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
     }
   end
-
   let :title do
     'test'
   end
@@ -39,7 +37,7 @@ describe 'postgresql::server::pg_ident_rule', :type => :define do
       }
     end
     it do
-      is_expected.to contain_concat_fragment('postgresql_ident_conf+150_pg_ident_rule_test').with({
+      is_expected.to contain_concat__fragment('pg_ident_rule_test').with({
         :content => /thatsmymap\s+systemuser\s+dbuser/
       })
     end
@@ -61,7 +59,7 @@ describe 'postgresql::server::pg_ident_rule', :type => :define do
       }
     end
     it 'should fail because $manage_pg_ident_conf is false' do
-      expect {subject}.to raise_error(Puppet::Error,
+      expect { catalogue }.to raise_error(Puppet::Error,
                                       /postgresql::server::manage_pg_ident_conf has been disabled/)
     end
   end

@@ -11,7 +11,7 @@ module Puppet::Parser::Functions
 
     password = args[0]
 
-    if password !~ /\$\$/
+    if password !~ /\$\$/ and password[-1] != '$'
       retval = "$$#{password}$$"
     else
       escape = Digest::MD5.hexdigest(password)[0..5].gsub(/\d/,'')

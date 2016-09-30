@@ -18,8 +18,10 @@ define postgresql::server::pg_ident_rule(
 
     # Create a rule fragment
     $fragname = "pg_ident_rule_${name}"
-    concat_fragment { "postgresql_ident_conf+${order}_${fragname}":
+    concat::fragment { $fragname:
+      target  => $target,
       content => template('postgresql/pg_ident_rule.conf'),
+      order   => $order,
     }
   }
 }
